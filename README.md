@@ -1,24 +1,24 @@
-### 说明
+# Tinker
 
-### install
-
-```bash
-composer require leearvin/hyperf-tinker
-```
-
-### publish config
+## install
 
 ```bash
-php bin/hyperf.php vendor:publish leearvin/hyperf-tinker
+composer require friendsofhyperf/tinker
 ```
 
-### use
+## publish config
+
+```bash
+php bin/hyperf.php vendor:publish friendsofhyperf/tinker
+```
+
+## use
 
 ```bash
 php bin/hyperf.php tinker
 ```
 
-### commnads
+## commnads
 
 * run command
 
@@ -72,6 +72,7 @@ Psy Shell v0.10.4 (PHP 7.2.34 — cli)
 => "skeleton"
 >>>
 ```
+
 * query db
 
 ```bash
@@ -141,7 +142,9 @@ object(App\Model\User)#81816 (28) {
 }
 => null
 ```
+
 * show doc
+
 ```bash
 >>> doc md5
 function md5($str, $raw_output = unknown)
@@ -151,6 +154,7 @@ PHP manual not found
     https://github.com/bobthecow/psysh/wiki/PHP-manual
 >>>
 ```
+
 * show class
 
 ```bash
