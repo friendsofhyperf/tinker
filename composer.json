@@ -1,5 +1,5 @@
 {
-    "name": "leearvin/hyperf-tinker",
+    "name": "friendsofhyperf/tinker",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -8,11 +8,15 @@
         "tinker",
         "swoole"
     ],
-    "authors": [
-        {
+    "authors": [{
             "name": "Arvin Hermit",
             "email": "arvin.hermit@gmail.com",
             "homepage": "https://github.com/Arvin-Lee"
+        },
+        {
+            "name": "Huangdijia",
+            "email": "huangdijia@gmail.com",
+            "homepage": "https://github.com/huangdijia"
         }
     ],
     "description": "Powerful REPL for the Hyperf framework.",
@@ -29,10 +33,10 @@
     "require": {
         "php": ">=7.2",
         "ext-swoole": ">=4.5",
-        "hyperf/di": "~2.0.0",
+        "hyperf/di": "^2.0",
         "psy/psysh": "^0.10.4",
-        "hyperf/command": "~2.0.0",
-        "hyperf/contract": "~2.0.0"
+        "hyperf/command": "^2.0",
+        "hyperf/contract": "^2.0"
     },
     "require-dev": {
         "hyperf/testing": "2.0.*"
