@@ -4,25 +4,25 @@
 [![Total Downloads](https://poser.pugx.org/friendsofhyperf/tinker/d/total.png)](https://packagist.org/packages/friendsofhyperf/tinker)
 [![GitHub license](https://img.shields.io/github/license/friendsofhyperf/tinker)](https://github.com/friendsofhyperf/tinker)
 
-## install
+## Installation
 
 ```bash
 composer require friendsofhyperf/tinker
 ```
 
-## publish config
+## Publish Config
 
 ```bash
 php bin/hyperf.php vendor:publish friendsofhyperf/tinker
 ```
 
-## use
+## Usage
 
 ```bash
 php bin/hyperf.php tinker
 ```
 
-## commnads
+## Commnads
 
 * run command
 
