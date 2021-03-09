@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 /**
- * This file is part of Hyperf.
+ * This file is part of friendsofhyperf/tinker.
  *
- * @link     https://www.hyperf.io
- * @document https://hyperf.wiki
- * @contact  group@hyperf.io
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ * @link     https://github.com/friendsofhyperf/tinker
+ * @document https://github.com/friendsofhyperf/tinker/blob/master/README.md
+ * @contact  huangdijia@gmail.com
  */
 namespace Hyperf\Tinker;
 
@@ -15,6 +14,9 @@ class ConfigProvider
 {
     public function __invoke(): array
     {
+        // fix for IDE
+        defined('BASE_PATH') or define('BASE_PATH', '');
+
         return [
             'annotations' => [
                 'scan' => [
