@@ -73,23 +73,29 @@ class TinkerCommand extends HyperfCommand
         $path = env('COMPOSER_VENDOR_DIR', BASE_PATH . DIRECTORY_SEPARATOR . 'vendor');
         $path .= '/composer/autoload_classmap.php';
 
-        $config = $this->container->get(ConfigInterface::class);
-
         $loader = ClassAliasAutoloader::register(
             $shell,
             $path,
-            $config->get('tinker.alias', []),
-            $config->get('tinker.dont_alias', [])
+            $this->config->get('tinker.alias', []),
+            $this->config->get('tinker.dont_alias', [])
         );
 
         if ($code = $this->input->getOption('execute')) {
-            $shell->setOutput($this->output);
-            $shell->execute($code);
+            try {
+                $shell->setOutput($this->output);
+                $shell->execute($code);
+            } finally {
+                $loader->unregister();
+            }
 
             return 0;
         }
 
-        return $shell->run();
+        try {
+            return $shell->run();
+        } finally {
+            $loader->unregister();
+        }
     }
 
     /**
