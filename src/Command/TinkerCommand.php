@@ -64,6 +64,9 @@ class TinkerCommand extends HyperfCommand
         $config = Configuration::fromInput($this->input);
         $config->setUpdateCheck(Checker::NEVER);
         $config->setUsePcntl((bool) $this->config->get('tinker.usePcntl', false));
+        $config->getPresenter()->addCasters(
+            $this->getCasters()
+        );
 
         $shell = new Shell($config);
 
@@ -122,5 +125,29 @@ class TinkerCommand extends HyperfCommand
         }
 
         return $commands;
+    }
+
+    /**
+     * Get an array of Laravel tailored casters.
+     *
+     * @return array
+     */
+    protected function getCasters()
+    {
+        $casters = [
+            'Hyperf\Utils\Collection' => 'FriendsOfHyperf\Tinker\TinkerCaster::castCollection',
+            // 'Illuminate\Support\HtmlString' => 'FriendsOfHyperf\Tinker\TinkerCaster::castHtmlString',
+            // 'Illuminate\Support\Stringable' => 'FriendsOfHyperf\Tinker\TinkerCaster::castStringable',
+        ];
+
+        if (class_exists('Hyperf\DbConnection\Model\Model')) {
+            $casters['Hyperf\DbConnection\Model\Model'] = 'FriendsOfHyperf\Tinker\TinkerCaster::castModel';
+        }
+
+        if (class_exists('Symfony\Component\Console\Application')) {
+            $casters['Symfony\Component\Console\Application'] = 'FriendsOfHyperf\Tinker\TinkerCaster::castApplication';
+        }
+
+        return $casters;
     }
 }

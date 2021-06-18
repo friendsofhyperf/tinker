@@ -33,13 +33,16 @@
     "require": {
         "php": ">=7.2",
         "ext-swoole": ">=4.5",
-        "hyperf/di": "^2.0",
-        "psy/psysh": "^0.10.4",
         "hyperf/command": "^2.0",
-        "hyperf/contract": "^2.0"
+        "hyperf/contract": "^2.0",
+        "hyperf/di": "^2.0",
+        "hyperf/framework": "^2.1",
+        "hyperf/utils": "^2.0",
+        "psy/psysh": "^0.10.4"
     },
     "require-dev": {
-        "hyperf/testing": "2.0.*",
+        "hyperf/database": "^2.0",
+        "hyperf/testing": "^2.0",
         "phpstan/phpstan": "^0.12",
         "friendsofphp/php-cs-fixer": "^2.14"
     },
