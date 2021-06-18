@@ -22,12 +22,12 @@
     "description": "Powerful REPL for the Hyperf framework.",
     "autoload": {
         "psr-4": {
-            "Hyperf\\Tinker\\": "src/"
+            "FriendsOfHyperf\\Tinker\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HyperfTest\\Tinker\\": "tests/"
+            "FriendsOfHyperf\\Tinker\\Test\\": "tests/"
         }
     },
     "require": {
@@ -48,7 +48,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "Hyperf\\Tinker\\ConfigProvider"
+            "config": "FriendsOfHyperf\\Tinker\\ConfigProvider"
         }
     },
     "scripts": {

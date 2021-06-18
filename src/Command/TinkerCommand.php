@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 /**
- * This file is part of friendsofhyperf/tinker.
+ * This file is part of hyperf-tinker.
  *
  * @link     https://github.com/friendsofhyperf/tinker
- * @document https://github.com/friendsofhyperf/tinker/blob/master/README.md
+ * @document https://github.com/friendsofhyperf/tinker/blob/2.x/README.md
  * @contact  huangdijia@gmail.com
  */
-namespace Hyperf\Tinker;
+namespace FriendsOfHyperf\Tinker\Command;
 
-use Hyperf\Command\Annotation\Command;
+use FriendsOfHyperf\Tinker\ClassAliasAutoloader;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Contract\ApplicationInterface;
 use Hyperf\Contract\ConfigInterface;
@@ -21,11 +21,9 @@ use Psy\VersionUpdater\Checker;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Exception\CommandNotFoundException;
 use Symfony\Component\Console\Exception\LogicException;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-/**
- * @Command
- */
 class TinkerCommand extends HyperfCommand
 {
     /**
@@ -58,6 +56,7 @@ class TinkerCommand extends HyperfCommand
         parent::configure();
         $this->setDescription('Interact with your application');
         $this->addOption('execute', null, InputOption::VALUE_OPTIONAL, 'Execute the given code using Tinker');
+        $this->addArgument('include', InputArgument::IS_ARRAY, 'Include file(s) before starting tinker');
     }
 
     public function handle()
@@ -69,6 +68,19 @@ class TinkerCommand extends HyperfCommand
         $shell = new Shell($config);
 
         $shell->addCommands($this->getCommands());
+        $shell->setIncludes($this->input->getArgument('include'));
+
+        $path = env('COMPOSER_VENDOR_DIR', BASE_PATH . DIRECTORY_SEPARATOR . 'vendor');
+        $path .= '/composer/autoload_classmap.php';
+
+        $config = $this->container->get(ConfigInterface::class);
+
+        $loader = ClassAliasAutoloader::register(
+            $shell,
+            $path,
+            $config->get('tinker.alias', []),
+            $config->get('tinker.dont_alias', [])
+        );
 
         if ($code = $this->input->getOption('execute')) {
             $shell->setOutput($this->output);

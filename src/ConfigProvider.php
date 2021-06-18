@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 /**
- * This file is part of friendsofhyperf/tinker.
+ * This file is part of hyperf-tinker.
  *
  * @link     https://github.com/friendsofhyperf/tinker
- * @document https://github.com/friendsofhyperf/tinker/blob/master/README.md
+ * @document https://github.com/friendsofhyperf/tinker/blob/2.x/README.md
  * @contact  huangdijia@gmail.com
  */
-namespace Hyperf\Tinker;
+namespace FriendsOfHyperf\Tinker;
 
 class ConfigProvider
 {
@@ -26,7 +26,7 @@ class ConfigProvider
                 ],
             ],
             'commands' => [
-                TinkerCommand::class,
+                Command\TinkerCommand::class,
             ],
             'publish' => [
                 [
