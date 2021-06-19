@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 /**
- * This file is part of friendsofhyperf/tinker.
+ * This file is part of hyperf-tinker.
  *
  * @link     https://github.com/friendsofhyperf/tinker
- * @document https://github.com/friendsofhyperf/tinker/blob/master/README.md
+ * @document https://github.com/friendsofhyperf/tinker/blob/2.x/README.md
  * @contact  huangdijia@gmail.com
  */
 namespace Hyperf\Tinker;
 
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
-use Hyperf\Contract\ApplicationInterface;
 use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
 use Psy\Configuration;
@@ -62,6 +61,8 @@ class TinkerCommand extends HyperfCommand
 
     public function handle()
     {
+        $this->getApplication()->setCatchExceptions(false);
+
         $config = Configuration::fromInput($this->input);
         $config->setUpdateCheck(Checker::NEVER);
         $config->setUsePcntl((bool) $this->config->get('tinker.usePcntl', false));
@@ -87,13 +88,11 @@ class TinkerCommand extends HyperfCommand
      */
     protected function getCommands()
     {
-        /** @var \Symfony\Component\Console\Application $application */
-        $application = $this->container->get(ApplicationInterface::class);
         $commands = [];
 
         $this->commandWhitelist = array_merge($this->commandWhitelist, (array) $this->config->get('tinker.command_white_list', []));
 
-        foreach ($application->all() as $name => $command) {
+        foreach ($this->getApplication()->all() as $name => $command) {
             if (in_array($name, $this->commandWhitelist)) {
                 $commands[] = $command;
             }
