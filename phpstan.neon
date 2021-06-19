@@ -6,9 +6,8 @@
 parameters:
   reportUnmatchedIgnoredErrors: false
   ignoreErrors:
-    - '#Static call to instance method Hyperf\\HttpServer\\Router\\Router::[a-zA-Z0-9\\_]+\(\)#'
-    - '#Static call to instance method Hyperf\\DbConnection\\Db::[a-zA-Z0-9\\_]+\(\)#'
     - 
       message: '#Undefined variable: \$this#'
       paths:
-        - config/console.php
+        - src/TinkerCaster.php
+    - '#Unsafe usage of new static\(\)\.#'
