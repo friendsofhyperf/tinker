@@ -1,34 +1,30 @@
 # Tinker
 
-[中文说明](README_CN.md)
+[English](README.md)
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/friendsofhyperf/tinker)](https://packagist.org/packages/friendsofhyperf/tinker)
-[![Total Downloads](https://img.shields.io/packagist/dt/friendsofhyperf/tinker)](https://packagist.org/packages/friendsofhyperf/tinker)
-[![License](https://img.shields.io/packagist/l/friendsofhyperf/tinker)](https://github.com/friendsofhyperf/tinker)
+Hyperf 的强大的 REPL 工具。
 
-The Powerful REPL for Hyperf.
-
-## Installation
+## 安装
 
 ```shell
 composer require friendsofhyperf/tinker
 ```
 
-## Publish Config
+## 发布配置
 
 ```shell
 php bin/hyperf.php vendor:publish friendsofhyperf/tinker
 ```
 
-## Usage
+## 使用
 
 ```shell
 php bin/hyperf.php tinker
 ```
 
-## Commands
+## 命令
 
-* Run command
+- 运行命令
 
 ````shell
 Psy Shell v0.10.4 (PHP 7.3.11 — cli)
@@ -43,7 +39,7 @@ Psy Shell v0.10.4 (PHP 7.3.11 — cli)
 >>>
 ````
 
-* The help command
+- 查看命令帮助
 
 ```shell
 >>> help
@@ -72,7 +68,7 @@ Psy Shell v0.10.4 (PHP 7.3.11 — cli)
   inspire          Display an inspiring quote
 ```
 
-* Get the ENV
+- 获取环境变量
 
 ```shell
 Psy Shell v0.10.4 (PHP 7.2.34 — cli)
@@ -81,7 +77,7 @@ Psy Shell v0.10.4 (PHP 7.2.34 — cli)
 >>>
 ```
 
-* Query the database
+- 模型操作
 
 ```shell
 ➜  t.hyperf.com git:(master) ✗ php bin/hyperf.php tinker
@@ -123,7 +119,7 @@ object(App\Model\User)#81816 (28) {
   bool(true)
   ["exists"]=>
   bool(true)
- 
+
   ["attributes":protected]=>
   array(4) {
     ["id"]=>
@@ -146,12 +142,12 @@ object(App\Model\User)#81816 (28) {
     ["updated_at"]=>
     string(19) "2020-11-23 18:38:03"
   }
-  
+
 }
 => null
 ```
 
-* Show doc
+- 查看文档
 
 ```shell
 >>> doc md5
@@ -163,7 +159,7 @@ PHP manual not found
 >>>
 ```
 
-* Show class
+- 查看源码
 
 ```shell
 >>> show App\Model\User
@@ -193,12 +189,3 @@ PHP manual not found
 
 >>>
 ```
-
-## Contact
-
-* [Twitter](https://twitter.com/huangdijia)
-* [Gmail](mailto:huangdijia@gmail.com)
-
-## License
-
-[MIT](LICENSE)
